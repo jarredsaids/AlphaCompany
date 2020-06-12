@@ -1,0 +1,14 @@
+networks:
+  backend:
+    driver: bridge
+services:
+  alpha_company:
+    container_name: alpha_company
+    image: creativitykills/nginx-php-server
+    networks:
+      backend: null
+    ports:
+      - 44600:80/tcp
+    volumes:
+      - /Users/dcdeaton/projects/David/AlphaCompany:/var/www:rw
+version: '3.0'

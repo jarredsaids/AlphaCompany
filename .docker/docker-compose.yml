@@ -2,13 +2,24 @@ networks:
   backend:
     driver: bridge
 services:
-  alpha_company:
-    container_name: alpha_company
+  nginx:
+    container_name: alpha_company_nginx
     image: creativitykills/nginx-php-server
     networks:
       backend: null
     ports:
-      - 44600:80/tcp
+      - 44601:80/tcp
     volumes:
       - /Users/dcdeaton/projects/David/AlphaCompany:/var/www:rw
+  mysql:
+    container_name: alpha_company_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+    image: mysql:5.7
+    networks:
+      backend: null
+    ports:
+      - 33069:3306/tcp
+    volumes:
+      - ../data/mysql:/var/lib/mysql:rw
 version: '3.0'

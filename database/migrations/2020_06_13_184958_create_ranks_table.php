@@ -17,6 +17,7 @@ class CreateRanksTable extends Migration
             $table->id();
             $table->string('grade');
             $table->string('name');
+            $table->string('abbreviation');
             $table->timestamps();
         });
     }
